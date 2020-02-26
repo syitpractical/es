@@ -1,0 +1,20 @@
+#include <90s8535.h>    
+#include <delay.h>
+
+void main(void)
+{
+PORTA=0x00;
+DDRA=0x01;
+
+PORTB=0x00;
+DDRB=0x01;
+while (1)
+
+{                 
+      
+PORTA=PORTA^1;
+delay_ms(500);
+PORTB=PORTB^1;
+
+};
+}
