@@ -1,0 +1,50 @@
+Practical No: 5 “Generating square wave at port pin”
+
+Aim:
+
+Write a program in Assembly/C programming language to alternately ON/OFF LEDs connected to two different ports. Draw appropriate circuit diagram to demonstrate the above problem. Write description of the above program and explain hardware and software part of above program. Draw o/p waveform if necessary.
+
+Softwares used:
+
+•	CodeVisionAVR Software.
+•	WAVRASM Software.
+•	Proteus Professional 6.5 SP5 Software.
+
+Components used:
+
+•	AT90S8535 Microcontroller.
+•	LED’s
+
+Logic:
+
+7.	Setting a logic-high on the LSB of PORTA and logic-low on PORTB.
+8.	Setting a delay of 1 sec.
+
+Program:
+
+
+
+#include <90s8535.h>
+
+ unsigned int timecount=0;
+ interrupt[TIM0_OVF] void timeo_ovf_isr(void)
+ {
+	TCNT0 = 6;
+	if(++timecount==2)
+	{
+		PORTA=PORTA^0x80;
+		timecount=0;
+	} }
+void main(void)
+{
+	DDRA = 0x80;
+	TCCR0 = 0x02;
+	TCNT0 = 0x00;
+	TIMSK = 0x01;
+	#asm("sei");
+   while (1)
+   {
+   };   
+}
+
+

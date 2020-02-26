@@ -1,0 +1,51 @@
+Practical No.2- “Simulate Binary Counter at Port”
+
+
+Aim:
+
+ Write a program in Assembly/C programming language to simulate binary counter (8 bit) on LEDs use one of the four ports of Mc of output interface to 8 LEDs (LEDs should glow one – by – one) .
+Explain hardware and software part of above program. 
+Draw o/p waveform if necessary.
+
+Softwares used:
+
+•	CodeVisionAVR Software.
+•	WAVRASM Software.
+•	Proteus Professional 6.5 SP5 Software.
+
+Components used:
+
+•	AT90S8535 Microcontroller.
+•	LED’s
+
+Logic:
+
+Setting a delay of 0.5 sec.
+
+
+Program :
+
+
+#include <90s8535.h>
+#include <delay.h>
+
+void main(void)
+{
+PORTA=0x00;
+DDRA=0xff;
+
+while (1)
+      {   
+          //PORTA=0x01;
+          DDRA=0x00;
+          PORTA=PORTA+PORTA;
+          DDRA=PORTA;
+          if(PORTA==0x00)
+          {
+	PORTA=0x01;
+	
+          }
+          delay_ms(200);
+
+      };
+}

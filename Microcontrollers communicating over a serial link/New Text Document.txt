@@ -1,0 +1,76 @@
+Practical No: 8 - “Microcontrollers communicating over a serial link”
+
+Aim:
+
+Write a program in Assembly/C programming language to alternately ON/OFF LEDs connected to two different ports. Draw appropriate circuit diagram to demonstrate the above problem. Write description of the above program and explain hardware and software part of above program. Draw o/p waveform if necessary.
+
+Software’s used:
+
+•	CodeVisionAVR Software.
+•	WAVRASM Software.
+•	Proteus Professional 6.5 SP5 Software.
+
+Components used:
+
+•	AT90S8535 Microcontroller.
+•	LED’s
+
+Logic:
+
+13.	Setting a logic-high on the LSB of PORTA and logic-low on PORTB.
+14.	Setting a delay of 1 sec
+
+
+Solution: 
+# include<mega16.h>
+# include <delay.h>
+void seg();
+void main()
+{
+DDRA = 0B11111111;
+DDRB = 0B11111111;
+while(1)
+{
+PORTB = 0B11000000;
+seg();
+PORTB = 0B11111001;
+seg();
+PORTB = 0B10100100;
+seg();
+PORTB = 0B10110000;
+seg();
+PORTB = 0B10011001;
+seg();
+PORTB = 0B10010010;
+seg();
+PORTB = 0B10000011;
+seg();
+PORTB = 0B11111000;
+seg();
+PORTB = 0B10000000;
+seg();
+}
+}
+void seg()
+{
+PORTA = 0B11000000;
+delay_ms(100);
+PORTA = 0B11111001;
+delay_ms(100);
+PORTA = 0B10100100;
+delay_ms(100);
+PORTA = 0B10110000;
+delay_ms(100);
+PORTA = 0B10011001;
+delay_ms(100);
+PORTA = 0B10010010;
+delay_ms(100);
+PORTA = 0B10000011;
+delay_ms(100);
+PORTA = 0B11111000;
+delay_ms(100);
+PORTA = 0B10000000;
+delay_ms(100);
+PORTA = 0B10011000;
+delay_ms(100);
+}

@@ -1,0 +1,57 @@
+Practical No: 6 “Generating Triangular wave at port pin”
+
+Aim:
+
+Write a program in Assembly/C programming language to alternately ON/OFF LEDs connected to two different ports. Draw appropriate circuit diagram to demonstrate the above problem. Write description of the above program and explain hardware and software part of above program. Draw o/p waveform if necessary.
+
+Softwares used:
+
+•	CodeVisionAVR Software.
+•	WAVRASM Software.
+•	Proteus Professional 6.5 SP5 Software.
+
+Components used:
+
+•	AT90S8535 Microcontroller.
+•	LED’s
+
+Logic:
+
+9.	Setting a logic-high on the LSB of PORTA and logic-low on PORTB.
+10.	Setting a delay of 1 sec.
+
+
+Program:
+
+
+#include <90s8535.h>
+
+int count = 0 ;
+
+void main(void)
+{
+
+PORTA=0xFF;
+DDRA=0xFF;
+#asm("sei") ;     
+
+
+       while (1)
+      {
+           if(count == 0)
+           {                    
+		for(count=0 ; count!=255 ; count++)
+		{
+		 PORTA = count ;  
+		}
+           }
+           if(count == 255)
+           {
+	for(count=255 ; count!=0 ; count--)
+	{
+		PORTA = count ;
+	}
+           }
+      }; 
+}
+

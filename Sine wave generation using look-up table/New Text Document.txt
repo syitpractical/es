@@ -1,0 +1,68 @@
+Practical No: 7 “Sine wave generation using look-up table”
+
+
+Aim:
+
+Write a program in Assembly/C programming language to alternately ON/OFF LEDs connected to two different ports. Draw appropriate circuit diagram to demonstrate the above problem. Write description of the above program and explain hardware and software part of above program. Draw o/p waveform if necessary.
+	
+Softwares used:
+
+•	CodeVisionAVR Software.
+•	WAVRASM Software.
+•	Proteus Professional 6.5 SP5 Software.
+
+Components used:
+
+•	AT90S8535 Microcontroller.
+•	LED’s
+
+Logic:
+
+11.	Setting a logic-high on the LSB of PORTA and logic-low on PORTB.
+12.	Setting a delay of 1 sec
+
+
+Program:
+
+#include <90s8535.h>
+int count = 9, i ;
+int arrValuesHigh[] = {245, 245, 246, 246, 247, 247, 248, 248, 249, 249, 250, 250, 251, 251, 252, 252, 253, 253, 254, 254, 255, 255} ; 
+int arrValuesLow[] = {0, 0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9} ;
+
+void main(void)
+{
+PORTA=0xFF;
+DDRA=0xFF;
+      while (1)
+      {
+		if(count == 9)
+		{               
+			for(i=0 ; i<22 ; i++)
+			{
+				 PORTA = arrValuesLow[i] ;
+			}
+			for(count=9 ; count!=245 ; count++)
+			{
+				 PORTA = count ;
+			}        
+			for(i=0 ; i<22 ; i++)
+			{
+				PORTA = arrValuesHigh[i] ;
+			}
+		}                             
+		 if(count == 245)                
+		{            
+			for(i=21 ; i>=0 ; i--)
+			{
+				PORTA = arrValuesHigh[i] ;
+			}
+			for(count=245 ; count!=9 ; count--)
+			{
+				PORTA = count ;
+			}   
+			for(i=21 ; i>=0 ; i--)
+			{
+				PORTA = arrValuesLow[i] ;
+			}
+		}
+      };}

@@ -1,0 +1,50 @@
+Practical No: 11	“Working of Interrupt_0 on falling edge”
+
+
+
+Aim:
+
+ Write a program in Assembly/C programming language to alternately ON/OFF LEDs connected to two different ports. Draw appropriate circuit diagram to demonstrate the above problem. Write description of the above program and explain hardware and software part of above program. Draw o/p waveform if necessary.
+
+Software’s used:
+
+•	CodeVisionAVR Software.
+•	WAVRASM Software.
+•	Proteus Professional 6.5 SP5 Software.
+
+Components used:
+
+•	AT90S8535 Microcontroller.
+•	LED’s
+
+Logic:
+
+19.	Setting a logic-high on the LSB of PORTA and logic-low on PORTB.
+20.	Setting a delay of 1 sec.
+
+
+Program:
+
+
+#include <90s8535.h>
+
+interrupt [EXT_INT0] void ext_int0_isr(void)
+{
+	PORTA=PORTA ^ 0x01;
+}
+
+void main(void)
+{
+
+ PORTB=0x01;
+ DDRB=0x01; 
+ DDRA=0x01; 
+
+ GIMSK=0x40;
+ MCUCR=0x02;
+ #asm("sei");  
+
+ while (1)
+      {
+      };
+}

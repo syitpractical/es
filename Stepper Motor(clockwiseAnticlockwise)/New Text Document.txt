@@ -1,0 +1,57 @@
+Practical No: 4 “Stepper Motor” (clockwise/Anticlockwise)
+
+
+Aim:
+
+Write a program in Assembly/C programming language to alternately ON/OFF LEDs connected to two different ports. Draw appropriate circuit diagram to demonstrate the above problem. Write description of the above program and explain hardware and software part of above program. Draw o/p waveform if necessary.
+
+Softwares used:
+
+•	CodeVisionAVR Software.
+•	WAVRASM Software.
+•	Proteus Professional 6.5 SP5 Software.
+
+Components used:
+
+•	AT90S8535 Microcontroller.
+•	LED’s
+
+Logic:
+
+5.	Setting a logic-high on the LSB of PORTA and logic-low on PORTB.
+6.	Setting a delay of 1 sec.
+
+
+#include <90s8535.h>
+#include <delay.h>
+int count1, count2 ;
+void main(void)
+{
+PORTA=0x01;
+DDRA=0xFF;
+PORTB=0x01;
+DDRB=0xFF;
+count1 = 0 ; 
+count2 = 0 ;
+           while (1)
+ {
+	delay_ms(200) ;
+	 PORTA = PORTA + PORTA ;       
+	 count1++ ;
+	if(count1 == 7)   
+	 {
+		 count1 = 0 ; 
+		delay_ms(200) ;
+		PORTA = 0x01 ;
+	}
+	delay_ms(200) ;
+	PORTB = PORTB + PORTB ;       
+	 count2++ ;
+	 if(count2 == 7)   
+	{
+		count2 = 0 ; 
+		delay_ms(200) ;
+	PORTB = 0x01 ;
+	}
+      }
+}
