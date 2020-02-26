@@ -1,0 +1,7 @@
+VERSION:3 SOURCE_TIMESTAMP:504E7B35
+NODE:I LEVEL:0 LINE:1 "C:\cvavr\inc\90s8535.h"
+NODE:V LEVEL:0 LINE:2 "count -> R4,R5"
+NODE:V LEVEL:0 LINE:2 "i -> R6,R7"
+NODE:V LEVEL:0 LINE:3 "arrValuesHigh -> RAM:????"
+NODE:V LEVEL:0 LINE:4 "arrValuesLow -> RAM:????"
+NODE:F LEVEL:0 LINE:6 "main(void)"

@@ -1,0 +1,5 @@
+VERSION:3 SOURCE_TIMESTAMP:504E787B
+NODE:I LEVEL:0 LINE:1 "C:\cvavr\inc\90s8535.h"
+NODE:V LEVEL:0 LINE:3 "timecount -> R4,R5"
+NODE:F LEVEL:0 LINE:4 "timeo_ovf_isr(void)"
+NODE:F LEVEL:0 LINE:12 "main(void)"

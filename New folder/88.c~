@@ -1,0 +1,60 @@
+#include <90s8535.h> 
+
+unsigned int timecount=0;       
+
+interrupt [TIM0_OVF] void time0_ovf_isr(void)
+{
+    TCNT0=6;
+    if(++timecount==2)
+    {  
+        PORTA=PORTA^0x80;
+        timecount=0;
+    }  
+}
+
+
+void main(void)
+{
+
+    DDRA=0x80;
+          TCCR0=0x02;
+          TCNT0=0x00;
+          TIMSK=0x01;
+          #asm("sei");
+
+while (1)
+          {
+                };
+}
+#include <90s8535.h>
+#include<delay.h>
+unsigned int chout = 0x00;
+void main(void)
+{
+PORTA=0x00;
+DDRA=0xFF; 
+UBRR=0x33;
+UCR=0x58; 
+while (1)
+      {
+       		UDR = chout;
+          	chout++;
+          	if(chout==0xff)
+          		chout=0x00;     
+       	delay_ms(100);       	
+            };
+}
+#include <90s8535.h>
+#include<delay.h>
+void main(void)
+{
+PORTA=0x00;
+DDRA=0xff;
+UCR=0x58;
+UBRR=0x33;
+while (1)
+      {
+	PORTA=UDR;
+	delay_ms(100);
+      };
+}
